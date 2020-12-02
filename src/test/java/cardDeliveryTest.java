@@ -2,6 +2,7 @@ import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
@@ -38,8 +39,7 @@ public class cardDeliveryTest {
     @Test
     void ifWrongDate() {
         $("[placeholder=Город]").setValue("Москва");
-        $("[data-test-id=date] input").doubleClick();
-        $("[data-test-id=date] input").sendKeys(Keys.DELETE);
+        $("[data-test-id=date] input").doubleClick().sendKeys(Keys.DELETE);
         $("[data-test-id=date] input").setValue("01.12.2020");
         $("[data-test-id=name] input").setValue("Петр Филатов");
         $("[data-test-id=phone] input").setValue("+79261234567");
