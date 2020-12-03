@@ -47,9 +47,7 @@ public class cardDeliveryTest {
     @Test
     void ifCityInEnglish() {
         $("[placeholder=Город]").setValue("Moscow");
-        LocalDate date = LocalDate.now().plusDays(3);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String testDate = date.format(dateTimeFormatter);
+        String testDate = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyy"));
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id=date] input").setValue(testDate);
         $("[data-test-id=name] input").setValue("Петр Филатов");
@@ -62,9 +60,7 @@ public class cardDeliveryTest {
     @Test
     void ifWrongDate() {
         $("[placeholder=Город]").setValue("Москва");
-        LocalDate date = LocalDate.now().plusDays(2);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String testDate = date.format(dateTimeFormatter);
+        String testDate = LocalDate.now().plusDays(2).format(DateTimeFormatter.ofPattern("dd.MM.yyy"));
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.DELETE);
         $("[data-test-id=date] input").setValue(testDate);
         $("[data-test-id=name] input").setValue("Петр Филатов");
@@ -78,9 +74,7 @@ public class cardDeliveryTest {
     void ifNameInEnglish() {
         $("[placeholder=Город]").setValue("Москва");
         $("[data-test-id=name] input").setValue("Petr Filatov");
-        LocalDate date = LocalDate.now().plusDays(3);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String testDate = date.format(dateTimeFormatter);
+        String testDate = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyy"));
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id=date] input").setValue(testDate);
         $("[data-test-id=phone] input").setValue("+79261234567");
@@ -92,9 +86,7 @@ public class cardDeliveryTest {
     @Test
     void ifWrongPhone() {
         $("[placeholder=Город]").setValue("Москва");
-        LocalDate date = LocalDate.now().plusDays(3);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String testDate = date.format(dateTimeFormatter);
+        String testDate = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyy"));
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id=date] input").setValue(testDate);
         $("[data-test-id=name] input").setValue("Петр Филатов");
@@ -107,9 +99,7 @@ public class cardDeliveryTest {
     @Test
     void ifNotClickCheckBox() {
         $("[placeholder=Город]").setValue("Москва");
-        LocalDate date = LocalDate.now().plusDays(3);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String testDate = date.format(dateTimeFormatter);
+        String testDate = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyy"));
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id=date] input").setValue(testDate);
         $("[data-test-id=name] input").setValue("Петр Филатов");
