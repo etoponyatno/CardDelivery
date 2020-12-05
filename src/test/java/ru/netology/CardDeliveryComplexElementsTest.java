@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class CardDeliveryComplexElements {
+public class CardDeliveryComplexElementsTest {
 
     @BeforeEach
     void setUp() {
