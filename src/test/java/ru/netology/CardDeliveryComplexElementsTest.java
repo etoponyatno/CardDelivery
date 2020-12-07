@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryComplexElementsTest {
@@ -24,9 +23,10 @@ public class CardDeliveryComplexElementsTest {
         $("[placeholder=Город]").setValue("Мо");
         $(byText("Москва")).click();
         $("[data-test-id=date] input").click();
-        String nextWeekDay = LocalDate.now().plusWeeks(1).format(DateTimeFormatter.ofPattern("d"));
+        LocalDate meetDate = LocalDate.now().plusWeeks(1);
+        String nextWeekDay = meetDate.format(DateTimeFormatter.ofPattern("d"));
         String thisWeekDay = LocalDate.now().format(DateTimeFormatter.ofPattern("d"));
-        if (Integer.valueOf(thisWeekDay) > Integer.valueOf(nextWeekDay)) {
+        if (Integer.parseInt(thisWeekDay) > Integer.parseInt(nextWeekDay)) {
             $("div[data-step='1']").click();
         }
         $$(".calendar__day").find(exactText(nextWeekDay)).click();
@@ -34,6 +34,6 @@ public class CardDeliveryComplexElementsTest {
         $("[data-test-id=phone] input").setValue("+79261234567");
         $("[data-test-id=agreement]").click();
         $(byText("Забронировать")).click();
-        $(withText("Успешно!")).waitUntil(Condition.visible, 15000);
+        $("[data-test-id=notification]").waitUntil(Condition.visible, 15000).shouldHave(exactText("Успешно! Встреча успешно забронирована на " + meetDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))));
     }
 }

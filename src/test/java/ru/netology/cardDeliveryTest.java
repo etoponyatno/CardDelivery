@@ -31,7 +31,7 @@ public class cardDeliveryTest {
         $("[data-test-id=phone] input").setValue("+79261234567");
         $("[data-test-id=agreement]").click();
         $(byText("Забронировать")).click();
-        $(withText("Успешно!")).waitUntil(visible, 15000);
+        $("[data-test-id=notification]").waitUntil(Condition.visible, 15000).shouldHave(exactText("Успешно! Встреча успешно забронирована на " + testDate));
     }
 
     @Test
